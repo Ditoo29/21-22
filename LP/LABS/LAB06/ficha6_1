@@ -1,0 +1,5 @@
+nao_membro(_, []).
+
+nao_membro(El, [Ca | Re]) :-
+    El \== Ca,
+    nao_membro(El, Re).

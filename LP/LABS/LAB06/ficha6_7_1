@@ -1,0 +1,7 @@
+duplica_elementos(Lst, L) :- duplica_elementos(Lst, L, []).
+
+duplica_elementos([], L, L).
+
+duplica_elementos([Ca | Re], L, Aux) :-
+    append(Aux, [Ca, Ca], NewAux),
+    duplica_elementos(Re, L, NewAux).

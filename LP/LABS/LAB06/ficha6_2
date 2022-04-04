@@ -1,0 +1,9 @@
+insere_ordenado(El, [], [El]).
+
+insere_ordenado(El, [Ca | Re], [El, Ca | Re]) :-
+    El < Ca.
+
+insere_ordenado(El, [Ca | Re], [Ca | Res]) :-
+    El >= Ca,
+    insere_ordenado(El, Re, Res).
+

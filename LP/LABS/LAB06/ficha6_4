@@ -1,0 +1,33 @@
+nao_membro(_, []).
+
+nao_membro(El, [Ca | Re]) :-
+    El \== Ca,
+    nao_membro(El, Re).
+
+%insere_ordenado
+
+insere_ordenado(El, [], [El]).
+
+insere_ordenado(El, [Ca | Re], [El, Ca | Re]) :-
+    El < Ca.
+
+insere_ordenado(El, [Ca | Re], [Ca | Res]) :-
+    El >= Ca,
+    insere_ordenado(El, Re, Res).
+
+%junta_novo_aleatorio
+
+junta_novo_aleatorio(Lst1, Lim_Inf, Lim_Sup, Lst2) :-
+    random_between(Lim_Inf, Lim_Sup, N),
+    nao_membro(N, Lst1),
+    insere_ordenado(N, Lst1, Lst2).
+
+%n_aleatorios
+
+n_aleatorios(0, _, _, []).
+
+n_aleatorios(N, LI, LS, L) :-
+  N > 0,
+  NewN is N - 1,
+  n_aleatorios(NewN, LI, LS, AuxL),
+  junta_novo_aleatorio(AuxL, LI, LS, L).

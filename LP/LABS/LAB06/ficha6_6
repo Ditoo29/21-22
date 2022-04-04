@@ -1,0 +1,15 @@
+comp_maior_lista([Ca | Re], C) :-
+    length(Ca, Len),
+    comp_maior_lista(Re, Len, C).
+
+comp_maior_lista([], C, C).
+
+comp_maior_lista([Ca | Re], Current, C) :-
+    length(Ca, Len),
+    Len < Current,
+    comp_maior_lista(Re, Current, C).
+
+comp_maior_lista([Ca | Re], Current, C) :-
+    length(Ca, Len),
+    Len >= Current,
+    comp_maior_lista(Re, Len, C).
